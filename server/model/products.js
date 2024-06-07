@@ -19,6 +19,28 @@ class products  {
         }
     }
 
+    get_products_with_search = (search_list, filterList,  target_properties) => {
+        if (this.applicationObject.hasOwnProperty('products')) {
+
+            let search_ids = Array.from(this.applicationObject.products.filter((x)=>{
+
+                for(let targetProperty in target_properties){
+                    if(x.hasOwnProperty(targetProperty)){
+
+                        for(let searchTerm in search_){
+                            if(searchTerm in )
+                            return search_list in x[target_property]
+                        }
+                    }
+                }
+                return false;
+            })
+            return this.applicationObject.products;
+        } else {
+            return false
+        }
+    }
+
     get_next_open_product_id = (from_id=0) => {
         if (this.applicationObject.hasOwnProperty('products')) {
             let search_ids = Array.from(this.applicationObject.products.filter((x)=>x.id > from_id).map((x)=>x.id))
