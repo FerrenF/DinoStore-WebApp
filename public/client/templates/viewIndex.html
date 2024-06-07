@@ -1,0 +1,42 @@
+<header class="store-header">
+    {{
+        "template": "templateHeader"
+    }}
+</header>
+<div class="layout-container">
+    <div class="left-bar center-layout">
+            {{
+                "template": "templateLeftSidebar",
+                "slots": [
+                    "templateProductFilters",
+                    "templateSidebarAd",
+                    "templateModularAd"
+                    ]
+            }}
+    </div>
+    <div class="content">
+        {{
+            "template":"templateSiteSummary"
+        }}
+        {{
+            "template": "templateProductGuide",
+                "options": {
+                    "maxItemDisplay":8
+                }
+        }}
+    </div>
+    <div class="right-bar center-layout">
+            {{
+                "template": "templateRightSidebar",
+                    "slots": [
+                            "templateModularAd",
+                            "templateModularAd"
+                        ]
+            }}
+    </div>
+</div>
+<footer>
+    {{
+        "template": "templateFooter"
+    }}
+</footer>

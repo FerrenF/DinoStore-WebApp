@@ -1,0 +1,49 @@
+{
+  "ads": [
+    {
+      "ad_name": "jq",
+      "ad_image": "/img/ads/modular_jq.jpg",
+      "ad_type": "modular",
+      "ad_link": "https://www.jurassicquest.com/",
+      "ad_sponsor": "Jurassic Quest Holdings",
+      "alt_text": "Get tickets to Jurassic Quest!",
+      "weight": 1
+    },
+    {
+      "ad_name": "dp",
+      "ad_image": "/img/ads/modular_dinopark.webp",
+      "ad_type": "modular",
+      "ad_link": "https://www.myabandonware.com/game/dinopark-tycoon-1ps",
+      "ad_sponsor": "The Internet",
+      "alt_text": "Play Dino Park Tycoon Today!",
+      "weight": 1
+    },
+    {
+      "ad_name": "dw",
+      "ad_image": "/img/ads/modular_dinoworld.png",
+      "ad_type": "modular",
+      "ad_link": "https://www.millerauditorium.com/shows/2023-2024/dinosaur-world-live",
+      "ad_sponsor": "Miller Auditorium",
+      "alt_text": "Visit Dinosaur World Live!",
+      "weight": 1
+    },
+    {
+      "ad_name": "hulu-dino",
+      "ad_image": "/img/ads/sidebar_hulu-dino.jpg",
+      "ad_type": "sidebar",
+      "ad_link": "https://www.hulu.com/series/dinosaur-f75dc17e-9e61-4282-a6ff-fe31f24310cd",
+      "ad_sponsor": "Hulu",
+      "alt_text": "Watch Dinosaur on Hulu!",
+      "weight": 1
+    },
+    {
+      "ad_name": "dinos-among-us",
+      "ad_image": "/img/ads/sidebar_dinosamong.webp",
+      "ad_type": "sidebar",
+      "ad_link": "https://discovervail.com/event/dinosaurs-among-us-exhibit-opening/",
+      "ad_sponsor": "Discover Vail",
+      "alt_text": "Dinosaurs are among us! See an exhibit today!",
+      "weight": 1
+    }
+  ]
+}

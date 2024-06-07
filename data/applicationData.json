@@ -1,0 +1,141 @@
+{
+    "settings": {
+        "siteTitle": "The Dino-Store",
+        "siteSlogan": "Rawr.",
+        "siteIcon": "/img/dinosaur-rex-svgrepo-com-white.svg",
+        "siteSummary": "<p>If you could order the king of the dinosaurs, Tyrannosaurus Rex, straight to your door: <b>Would you?</b>\n                <br>\n                Well... Our scientists have been sleep deprived consistently for half a decade, and our executives have\n                spent millions in public grants convincing YOU that this is a FANTASTIC idea.\n                <br>\n                <br>\n                Browse our selection of prehistoric pals and have them shipped directly to your doorstep, your neighbors\n                doorstep, your landlord's doorstep, and more! Is a Tyrannasaurus Rex a little too much for you? Say it\n                isn't so!</p>\n            <img alt=\"surprised\" src=\"/img/dinosaur-rex-svgrepo-com.svg\" height=\"256\">\n            <p>\n                Even if it is so, we have a dinosaur for everyone: from the gentle <i>Brontosaurus</i>, to your favorite\n                feathered friend, the <i>Therizinosaurus</i>.</p>",
+        "applicationPath": "application/",
+        "maxFilters": 5
+    },
+    "products": [
+        {
+            "id":0,
+            "product_name": "king_rex",
+            "product_title": "Tyrannosaurus Rex",
+            "product_short_description": "Our door buster line! Unleash the king of the dinosaurs with a direct-to-door Tyrannosaurus Rex!",
+            "product_description": "Our first and most famous product line! These massive, ferocious predators are sure to make a statement and\n            add a big bite of prehistoric power to any part of your (or any others') life. Dogs? Boring. Cats? Too easy.\n            From their insatiable appetite to their immense strength, owning a T. Rex is not for the faint of heart. Are\n            you ready to take on the ultimate companion challenge? Order now and find out pretty quickly!",
+            "product_image": "/img/tyran.jpg",
+            "product_image_alt": "t-rex",
+            "product_weight": 10000,
+            "product_weight_unit": "lbs",
+            "product_price": 100000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "carnivore","extra-large","bipedal","offense"
+            ]
+        },
+        {
+            "id":1,
+            "product_name": "triceratopshelf",
+            "product_title": "Triceratops",
+            "product_short_description": "A powerhouse combining defense and offense! Take one off-road today!",
+            "product_description": "Meet our rugged and resilient Triceratops line: the ultimate blend of power and defense! With just a few days\n            shipping, you'll have three trademark magnificent horns and a sturdy frill to intimidate those who would\n            attack you. Even more, this line is equipped with state-of-the-art sass and a little bigotry too - your new\n            product will fit right in, even in congress! Give this gentle giant a chance and let it impress your allies\n            and enemies alike. ",
+            "product_image": "/img/cera.webp",
+            "product_image_alt": "A little biggot, a lot of flash.",
+            "product_weight": 30000,
+            "product_weight_unit": "lbs",
+            "product_price": 200000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "herbivore", "extra-large", "chunk", "defense", "quadrupedal", "horned"
+            ]
+        },
+        {
+            "id":2,
+            "product_name": "stego",
+            "product_title": "Stegosaurus",
+            "product_short_description": "The dreaded prehistoric tank. Have one in your arsenal today!",
+            "product_description": "The prehistoric tank with style! Covered with toughened plates and swinging around a spiked tail, I wouldn't want to be the guy attacking you when you bust ouf your dinosaur garage with this bad business. RIDING READY: Large models are capable of hosting up to ten friends on it's back while you rampage across any terrain you can imagine. Perfect for those who want a functional dinosaur companion. Ready to add some serious damage to your driving? Order your Stegosaurus today and get advanced notification of arrival via seismograph! </p>\n",
+            "product_image": "/img/stego.jpg",
+            "product_image_alt": "Look at that comfort potential!",
+            "product_weight": 40000,
+            "product_weight_unit": "lbs",
+            "product_price": 200000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "herbivore", "transport", "massive", "chunk","defense", "quadrupedal", "spiked"
+            ]
+        },
+        {
+            "id":3,
+            "product_name": "therizine",
+            "product_title": "Therizinosaur",
+            "product_short_description": "NEW: Perfect for vegan households, this definitely gentle creature eats only plants. Look at how long those claws are - you'll never need to trim the bushes again!",
+            "product_description": " <p>Even wolverine would be envious of those claws! Towering at over 16 feet, this feathered friend is equipped\n            to handle even the highest of branches when trimming your trees. Make no mistake, those claws aren't just\n            good for gardening - they are also adept at slicing cake. Try one of our most functional lines of\n            dinos! ",
+            "product_image": "/img/theriz.webp",
+            "product_image_alt": "look at the claws!",
+            "product_weight": 40000,
+            "product_weight_unit": "lbs",
+            "product_price": 150000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "herbivore", "feathered", "medium", "hybrid", "bipedal", "gatherer"
+            ]
+        },
+        {
+            "id":4,
+            "product_name": "dinodate",
+            "product_title": "Allosaurus",
+            "product_short_description": "Our hottest deal yet! Literally! Look at how intelligent and refined this gentleman in the picture looks. He'd be nice over for dinner, right? BUY NOW!",
+            "product_description": " <p>What an absolutely dashing lad. Ready to roar into the scene with a partner that's truly out of this world?\n            Look no further than our Allosaurus product line—this intelligent, well-refined, and skillful dino is the\n            ultimate catch for anyone seeking excitement and adventure in their <strike>love</strike> life. Let moonlit\n            strolls through the Mesozoic and thrilling hunts in the prehistoric wilderness fill your evenings!",
+            "product_image": "/img/allo.jpg",
+            "product_image_alt": "A fine lad who absolutely will not steal your girl.",
+            "product_weight": 5000,
+            "product_weight_unit": "lbs",
+            "product_price": 250000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "carnivore", "large", "bipedal", "intelligent", "pack-dino"
+            ]
+        },
+        {
+            "id":5,
+            "product_name": "awkward",
+            "product_title": "Incisivosaurus",
+            "product_short_description": "Wingman? Goofball! GOOFBALL WINGMAN! Score!",
+            "product_description": "Luck with the ladies (or gentlemen!) has never been so wholesome and easy! Meet the Incisivosaurus—your\n            ultimate partner in crime for navigating the prehistoric-modern world of dating! An endearing smile and a\n            sparse set of comically oversized teeth will give you the power to break the ice on the first date and turn\n            heads wherever you go! Who needs sleek sophistication when you have rugged, unbathed charm. Try one now!</p>",
+            "product_image": "/img/incis.webp",
+            "product_image_alt": "This silly boy knows how to strike up conversations with the opposite sex.",
+            "product_weight": 190,
+            "product_weight_unit": "lbs",
+            "product_price": 90000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "herbivore", "small", "pack-dino", "feathered"
+            ]
+        },
+        {
+            "id":6,
+            "product_name": "raptorex",
+            "product_title": "Raptorex",
+            "product_short_description": "Small, affordable, and they come in bulk! What's not to love! Have them run your flea market today!",
+            "product_description": "Need able bodies fast? They might not have human intelligence, but there sure is a lot of them! AND they are\n            cheap! My buddy Ron bought ten of these guys and they almost completely run his flea market by themselves,\n            letting Ron do more important things like fishing. Ron did always like fishing. Make sure you pay them a\n            fair salary, unlike Ron, or they might form a union - and these are much deadlier than normal!",
+            "product_image": "/img/raptor.webp",
+            "product_image_alt": "This silly boy knows how to strike up conversations with the opposite sex.",
+            "product_weight": 100,
+            "product_weight_unit": "lbs",
+            "product_price": 30000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "carnivore", "small", "pack-dino", "agility", "offense"
+            ]
+        },
+        {
+            "id":7,
+            "product_name": "bronto",
+            "product_title": "Brontosaurus",
+            "product_short_description": "Our tallest, most massive offering. Command over your horde of dinosaurs from above, at like three Tyrannosaurus Rex' on-top-of-eachother-tall. Find out how the air is up there today!",
+            "product_description": "Taller than a T. Rex, thicker than a stegosaurus, our Brontosaurus line is the ultimate command platform and\n            challenge for local infrastructure. Command armies from above on the back of this gentle and herbivorous\n            giant; Put out fires on the thirtieth floor of your apartment complex; or maybe just get a good look at what\n            the neighbors are doing over there at their barbeque. Up to no good, obviously. Don't rubberneck,\n            Brontosaurus neck! ",
+            "product_image": "/img/bronto.jpg",
+            "product_image_alt": "Neck. Neeeeeck. For WEEKS.",
+            "product_weight": 10000,
+            "product_weight_unit": "lbs",
+            "product_price": 300000,
+            "product_price_unit": "USD",
+            "product_tags": [
+                "herbivore", "massive", "defense", "platform"
+            ]
+        }
+    ]
+}
+
