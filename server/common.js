@@ -1,10 +1,18 @@
 
-function debug_message(message, level){
-    console.log(message)
+const DEBUG_MODE = "WARN"
+const msgMap = {
+    'VERBOSE' : 0,
+    'INFO': 1,
+    'WARN': 2,
+    'WARNING': 2,
+    'ERROR': 3,
+    'CRITICAL': 4
 }
 
-function graceful_shutdown(code, message){
-
+function debug_message(message, level="INFO") {
+    let monitorLevel = msgMap[DEBUG_MODE];
+    let incomingLevel = msgMap[level.toUpperCase()]
+    if ((incomingLevel && incomingLevel) >= monitorLevel) {
+        console.log(message)
+    }
 }
-
-module.exports = {debug_message, graceful_shutdown}

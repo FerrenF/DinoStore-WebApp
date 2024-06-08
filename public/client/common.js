@@ -35,14 +35,13 @@ export function isString(x) {
 export function isNumber(x){
     return (typeof x === 'number' && isFinite(x)) ||  (Object.prototype.toString.apply(x) === '[object Number]') ;
 }
-export function searchParamsToJson(searchParams) {
-    const params = {};
-    for (const [key, value] of searchParams.entries()) {
-        params[key] = value;
-    }
-    return params;
-}
 
+/*
+
+    appendPortToCurrentLocation
+        appendPortToCurrentLocation appends a set of query parameters either to the root directory or current relative directory
+
+ */
 export function appendPortToCurrentLocation(port, includeQueryParams = false, rootDirectory = false) {
     const currentLocation = window.location;
     const protocol = currentLocation.protocol;
@@ -50,8 +49,6 @@ export function appendPortToCurrentLocation(port, includeQueryParams = false, ro
     const pathname = rootDirectory ? '/' : currentLocation.pathname;
     const hash = currentLocation.hash;
     const search = includeQueryParams ? currentLocation.search : '';
-
-    // Construct the new URL with or without the search (query parameters)
     return `${protocol}//${hostname}:${port}${pathname}${search}${hash}`;
 }
 
@@ -67,7 +64,15 @@ export function setQueryParam(param, value) {
     return urlParams;
 }
 
+/*
+    apiRequest
+        apiRequest takes: a string to append to the current URL's root as an endpoint, a string representing request method, and a list of parameters to convert into query params
+        apiRequest makes use of XMLHttpRequest() to send a request to the server, instead of the fetch api
 
+        TODO:
+            Possibly change promise rejections and subsequent errors into a debugMessage and resolution with placeholder values.
+            Currently, the rejections cause the UX to halt.
+ */
 export function apiRequest(endpoint, method = 'GET', params = null) {
 
     return new Promise((resolve, reject) => {

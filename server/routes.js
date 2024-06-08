@@ -7,7 +7,11 @@ const path = require("path");
 const express = require("express");
 // routes.js serves our REST api route controllers
 
-
+/*
+    friendly_send
+        friendly_send simply wraps whatever object it's sending to the response in JSON, and then attaches
+        headers that allow cross-origin resource sharing to happen.
+ */
 function friendly_send(res, obj){
     //'Access-Control-Allow-Origin'
     // I had to do this to host on different ports from the same script.
@@ -16,6 +20,12 @@ function friendly_send(res, obj){
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     res.send(JSON.stringify(obj))
 }
+
+
+/*
+    set_up_server_routes
+        set_up_server_routes takes an express applicationObject and registers routes to appropriate server API methods.
+ */
 function set_up_server_routes(serverApp, applicationObject){
 
     // Route to get settings
@@ -72,7 +82,12 @@ function set_up_server_routes(serverApp, applicationObject){
 
 }
 
-// Covers all routes, minus urls with an extension, and preserves public directories
+
+/*
+        set_up_client_routes
+            set_up_client_routes redirects all routes on the client port, minus those requests that refer to an individual file and
+            public folders, to the index.html page within the public directory.
+ */
 function set_up_client_routes(clientApp){
     clientApp.get(/^\/(?!.*\.[a-zA-Z0-9]+$)(.*)$/, (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
