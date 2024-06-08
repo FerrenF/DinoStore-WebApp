@@ -5,7 +5,8 @@
         "siteIcon": "/img/dinosaur-rex-svgrepo-com-white.svg",
         "siteSummary": "<p>If you could order the king of the dinosaurs, Tyrannosaurus Rex, straight to your door: <b>Would you?</b>\n                <br>\n                Well... Our scientists have been sleep deprived consistently for half a decade, and our executives have\n                spent millions in public grants convincing YOU that this is a FANTASTIC idea.\n                <br>\n                <br>\n                Browse our selection of prehistoric pals and have them shipped directly to your doorstep, your neighbors\n                doorstep, your landlord's doorstep, and more! Is a Tyrannasaurus Rex a little too much for you? Say it\n                isn't so!</p>\n            <img alt=\"surprised\" src=\"/img/dinosaur-rex-svgrepo-com.svg\" height=\"256\">\n            <p>\n                Even if it is so, we have a dinosaur for everyone: from the gentle <i>Brontosaurus</i>, to your favorite\n                feathered friend, the <i>Therizinosaurus</i>.</p>",
         "applicationPath": "application/",
-        "maxFilters": 5
+        "maxFilters": 5,
+        "maxProductGuideDisplay": 6
     },
     "products": [
         {
@@ -45,7 +46,7 @@
             "product_name": "stego",
             "product_title": "Stegosaurus",
             "product_short_description": "The dreaded prehistoric tank. Have one in your arsenal today!",
-            "product_description": "The prehistoric tank with style! Covered with toughened plates and swinging around a spiked tail, I wouldn't want to be the guy attacking you when you bust ouf your dinosaur garage with this bad business. RIDING READY: Large models are capable of hosting up to ten friends on it's back while you rampage across any terrain you can imagine. Perfect for those who want a functional dinosaur companion. Ready to add some serious damage to your driving? Order your Stegosaurus today and get advanced notification of arrival via seismograph! </p>\n",
+            "product_description": "The prehistoric tank with style! Covered with toughened plates and swinging around a spiked tail, I wouldn't want to be the guy attacking you when you bust ouf your dinosaur garage with this bad business. RIDING READY: Large models are capable of hosting up to ten friends on it's back while you rampage across any terrain you can imagine. Perfect for those who want a functional dinosaur companion. Ready to add some serious damage to your driving? Order your Stegosaurus today and get advanced notification of arrival via seismograph!\n",
             "product_image": "/img/stego.jpg",
             "product_image_alt": "Look at that comfort potential!",
             "product_weight": 40000,
@@ -61,7 +62,7 @@
             "product_name": "therizine",
             "product_title": "Therizinosaur",
             "product_short_description": "NEW: Perfect for vegan households, this definitely gentle creature eats only plants. Look at how long those claws are - you'll never need to trim the bushes again!",
-            "product_description": " <p>Even wolverine would be envious of those claws! Towering at over 16 feet, this feathered friend is equipped\n            to handle even the highest of branches when trimming your trees. Make no mistake, those claws aren't just\n            good for gardening - they are also adept at slicing cake. Try one of our most functional lines of\n            dinos! ",
+            "product_description": "Even wolverine would be envious of those claws! Towering at over 16 feet, this feathered friend is equipped\n            to handle even the highest of branches when trimming your trees. Make no mistake, those claws aren't just\n            good for gardening - they are also adept at slicing cake. Try one of our most functional lines of\n            dinos! ",
             "product_image": "/img/theriz.webp",
             "product_image_alt": "look at the claws!",
             "product_weight": 40000,
@@ -77,7 +78,7 @@
             "product_name": "dinodate",
             "product_title": "Allosaurus",
             "product_short_description": "Our hottest deal yet! Literally! Look at how intelligent and refined this gentleman in the picture looks. He'd be nice over for dinner, right? BUY NOW!",
-            "product_description": " <p>What an absolutely dashing lad. Ready to roar into the scene with a partner that's truly out of this world?\n            Look no further than our Allosaurus product line—this intelligent, well-refined, and skillful dino is the\n            ultimate catch for anyone seeking excitement and adventure in their <strike>love</strike> life. Let moonlit\n            strolls through the Mesozoic and thrilling hunts in the prehistoric wilderness fill your evenings!",
+            "product_description": "What an absolutely dashing lad. Ready to roar into the scene with a partner that's truly out of this world?\n            Look no further than our Allosaurus product line—this intelligent, well-refined, and skillful dino is the\n            ultimate catch for anyone seeking excitement and adventure in their <strike>love</strike> life. Let moonlit\n            strolls through the Mesozoic and thrilling hunts in the prehistoric wilderness fill your evenings!",
             "product_image": "/img/allo.jpg",
             "product_image_alt": "A fine lad who absolutely will not steal your girl.",
             "product_weight": 5000,
@@ -93,7 +94,7 @@
             "product_name": "awkward",
             "product_title": "Incisivosaurus",
             "product_short_description": "Wingman? Goofball! GOOFBALL WINGMAN! Score!",
-            "product_description": "Luck with the ladies (or gentlemen!) has never been so wholesome and easy! Meet the Incisivosaurus—your\n            ultimate partner in crime for navigating the prehistoric-modern world of dating! An endearing smile and a\n            sparse set of comically oversized teeth will give you the power to break the ice on the first date and turn\n            heads wherever you go! Who needs sleek sophistication when you have rugged, unbathed charm. Try one now!</p>",
+            "product_description": "Luck with the ladies (or gentlemen!) has never been so wholesome and easy! Meet the Incisivosaurus—your\n            ultimate partner in crime for navigating the prehistoric-modern world of dating! An endearing smile and a\n            sparse set of comically oversized teeth will give you the power to break the ice on the first date and turn\n            heads wherever you go! Who needs sleek sophistication when you have rugged, unbathed charm. Try one now!",
             "product_image": "/img/incis.webp",
             "product_image_alt": "This silly boy knows how to strike up conversations with the opposite sex.",
             "product_weight": 190,

@@ -4,7 +4,7 @@
     <p>Asking Price: {{"query": "product.product_price"}} {{"query": "product.product_price_unit"}}</p>
     <p>{{"query": "product.product_description"}}</p>
     <p>Weight: {{"query": "product.product_weight"}} {{"query": "product.product_weight_unit"}}</p>
-    <h4>Tags: {{"query": "product.product_tags"}}</h4>
-    <a href="{{"method": "get_next_product_url"}}">Next Product</a>
-    <a href="/application" style="float:right;">Back to Main Page</a>
+    <h4>Tags: {{"query": "product.product_tags", "format": "csv"}}</h4>
+    <a href="/products/id/{{"query": "product.next_id"}}">Next Product</a>
+    <a href="/" style="float:right;">Back to Main Page</a>
 </div>

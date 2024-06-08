@@ -1,14 +1,69 @@
-class products  {
+class Products  {
     constructor(applicationObject) {
         this.applicationObject = applicationObject
     }
 
-    get_products = () => {
-        if (this.applicationObject.hasOwnProperty('products')) {
-            return this.applicationObject.products;
-        } else {
-            return false
+    // Returns products, filtered by search_terms that are compared against search_properties
+    // Injects into each returned project information object the next used id, for client use.
+
+    get_products = (search_terms = ["*"], search_properties = ["product_name", "product_title", "product_description", "product_short_description"], tag_filters = []) => {
+        if (!this.applicationObject.hasOwnProperty('products')) {
+            return false;
         }
+
+        let filteredProducts = this.applicationObject.products;
+
+        if (!search_terms.includes("*")) {
+            filteredProducts = filteredProducts.filter(product => {
+                return search_properties.some(property => {
+                    return search_terms.some(term => {
+                        if (product.hasOwnProperty(property)) {
+                            return product[property].toString().toLowerCase().includes(term.toLowerCase());
+                        }
+                        return false;
+                    });
+                });
+            });
+        }
+
+        // Filter products based on tag_filters
+        if (tag_filters.length > 0) {
+            filteredProducts = filteredProducts.filter(product => {
+                return tag_filters.every(tag => product.product_tags.includes(tag));
+            });
+        }
+
+        // Map products to include the next_id property
+        return filteredProducts.map(product => {
+            return {
+                ...product,
+                next_id: this.get_next_used_product_id(product.id)
+            };
+        });
+    }
+
+    // returns all unique tags, and a product count for each
+    get_product_tags = () => {
+        if (!this.applicationObject.hasOwnProperty('products')) {
+            return false;
+        }
+
+        const allProducts = this.applicationObject.products;
+        const tagCount = {};
+
+        allProducts.forEach(product => {
+            if (product.hasOwnProperty('product_tags') && Array.isArray(product.product_tags)) {
+                product.product_tags.forEach(tag => {
+                    if (tagCount.hasOwnProperty(tag)) {
+                        tagCount[tag]++;
+                    } else {
+                        tagCount[tag] = 1;
+                    }
+                });
+            }
+        });
+
+        return tagCount;
     }
 
     get_num_products = () => {
@@ -19,51 +74,32 @@ class products  {
         }
     }
 
-    get_products_with_search = (search_list, filterList,  target_properties) => {
-        if (this.applicationObject.hasOwnProperty('products')) {
-
-            let search_ids = Array.from(this.applicationObject.products.filter((x)=>{
-
-                for(let targetProperty in target_properties){
-                    if(x.hasOwnProperty(targetProperty)){
-
-                        for(let searchTerm in search_){
-                            if(searchTerm in )
-                            return search_list in x[target_property]
-                        }
-                    }
-                }
-                return false;
-            })
-            return this.applicationObject.products;
-        } else {
-            return false
+    get_next_open_product_id = (from_id = 0) => {
+        if (!this.applicationObject.hasOwnProperty('products')) {
+            return from_id;
         }
+        const productIds = this.applicationObject.products.map(product => product.id);
+        let nextId = from_id;
+        while (productIds.includes(nextId)) {
+            nextId++;
+        }
+
+        return nextId;
     }
 
-    get_next_open_product_id = (from_id=0) => {
-        if (this.applicationObject.hasOwnProperty('products')) {
-            let search_ids = Array.from(this.applicationObject.products.filter((x)=>x.id > from_id).map((x)=>x.id))
-            let max_id = 0
-            let id_counter = from_id
-            for(let used_id in search_ids){
-                let distance_from_previous = (id_counter - used_id)
-                if(distance_from_previous>1){
-                    for(let i=0;i<distance_from_previous;i++){
-                        let test = used_id+i;
-                        if(!(test in search_ids)){
-                            return test
-                        }
-                    }
-                }
-                id_counter=used_id
-                max_id = used_id > max_id ? used_id : max_id;
+    get_next_used_product_id = (from_id = 0) => {
+        if (!this.applicationObject.hasOwnProperty('products')) {
+            return false;
+        }
+        const productIds = this.applicationObject.products.map(product => product.id).sort((a, b) => a - b);
+        for (let id of productIds) {
+            if (id >= from_id) {
+                return id;
             }
-            return max_id+1
-        } else {
-            return false
         }
+        return 0;
     }
+
 
     add_product = (params) => {
 
@@ -74,4 +110,4 @@ class products  {
     }
 }
 
-module.exports={products}
+module.exports={Products}

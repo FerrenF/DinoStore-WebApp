@@ -1,13 +1,27 @@
-<div class="left-bar center-layout">
-    <div class="left-sidebar">
-        {{slot:left-sidebar}}
+<header class="store-header">
+    {{
+    "template": "templateHeader"
+    }}
+</header>
+<div class="layout-container">
+    <div class="left-bar center-layout">
+        {{
+        "template": "templateLeftSidebar"
+        }}
+    </div>
+    <div class="content">
+        {{
+        "template": "templateDisplayProduct"
+        }}
+    </div>
+    <div class="right-bar center-layout">
+        {{
+        "template": "templateRightSidebar"
+        }}
     </div>
 </div>
-<div class="content">
-    {{slot:content}}
-</div>
-<div class="right-bar center-layout">
-    <div class="right-sidebar">
-        {{slot:right-sidebar}}
-    </div>
-</div>
+<footer>
+    {{
+    "template": "templateFooter"
+    }}
+</footer>

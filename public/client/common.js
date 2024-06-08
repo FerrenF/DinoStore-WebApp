@@ -1,15 +1,41 @@
 export const APP_PORT = 3050
 export const API_PORT = 3051
 
-export function debugMessage(message, level){
-    console.log(message)
+export const DEBUG_MODE = "WARN"
+const msgMap = {
+    'VERBOSE' : 0,
+    'INFO': 1,
+    'WARN': 2,
+    'WARNING': 2,
+    'ERROR': 3,
+    'CRITICAL': 4
 }
+export function debugMessage(message, level="INFO") {
+    let monitorLevel = msgMap[DEBUG_MODE];
+    let incomingLevel = msgMap[level.toUpperCase()]
+    if ((incomingLevel && incomingLevel) >= monitorLevel) {
+        console.log(message)
+    }
+}
+
+export const shuffle = (array) => {
+    // i feel like i am missing a builtin somewhere
+    return array.sort(() => Math.random() - 0.5);
+};
+
 
 export function graceful_shutdown(code, message){
 
 }
 
-function searchParamsToJson(searchParams) {
+export function isString(x) {
+    return Object.prototype.toString.call(x) === "[object String]";
+}
+
+export function isNumber(x){
+    return (typeof x === 'number' && isFinite(x)) ||  (Object.prototype.toString.apply(x) === '[object Number]') ;
+}
+export function searchParamsToJson(searchParams) {
     const params = {};
     for (const [key, value] of searchParams.entries()) {
         params[key] = value;
@@ -17,24 +43,39 @@ function searchParamsToJson(searchParams) {
     return params;
 }
 
-export function appendPortToCurrentLocation(port) {
+export function appendPortToCurrentLocation(port, includeQueryParams = false, rootDirectory = false) {
     const currentLocation = window.location;
     const protocol = currentLocation.protocol;
     const hostname = currentLocation.hostname;
-    const pathname = currentLocation.pathname;
+    const pathname = rootDirectory ? '/' : currentLocation.pathname;
     const hash = currentLocation.hash;
+    const search = includeQueryParams ? currentLocation.search : '';
 
-    // Construct the new URL without the search (query parameters)
-    return `${protocol}//${hostname}:${port}${pathname}${hash}`;
+    // Construct the new URL with or without the search (query parameters)
+    return `${protocol}//${hostname}:${port}${pathname}${search}${hash}`;
 }
+
+export function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search)
+    let p = urlParams.get(param);
+    return p ? p : false ;
+}
+
+export function setQueryParam(param, value) {
+    const urlParams = new URLSearchParams(window.location.search)
+    urlParams.set(param, value);
+    return urlParams;
+}
+
 
 export function apiRequest(endpoint, method = 'GET', params = null) {
 
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const baseUrl = appendPortToCurrentLocation(API_PORT); // replace with your actual API base URL and port
+        const baseUrl = appendPortToCurrentLocation(API_PORT,false,true);
         let url = `${baseUrl}${endpoint}`;
 
+        debugMessage(`Processing API request to ${method} : ${endpoint} with params ${JSON.stringify(params)} through URL:\n${url}`,"VERBOSE");
         if (params && method === 'GET') {
             const queryString = new URLSearchParams(params).toString();
             url += `?${queryString}`;
