@@ -14,18 +14,12 @@ function router() {
     } else {
         return new Promise(function(resolve, reject) {
            resolve('<p>Page not found.</p>')
+            // TODO: Make a page for this. It'll be easy.
         })
     }
 }
 
-export function init_router(){
-
-    // Listen for popstate events (back/forward navigation)
-    window.addEventListener('popstate', ()=>{
-        router().then((contentBody)=>{
-            load_page_into_body(contentBody)
-        });
-    });
+export function initRouter(){
     let contentR = router().then((result)=>{
         document.getElementById('page-content').innerHTML = result;
         load_page_into_body(result)
@@ -39,7 +33,21 @@ export function navigateTo(url) {
     });
 }
 
-export function hook_all_href_tags() {
+
+/*
+    hookPopstateEvents
+        Listen for popstate events (back/forward navigation)
+ */
+export function hookPopstateEvents(){
+    debugMessage('Attempting to hook popstate (Forward/Back Browser Control)...', 'INFO');
+    window.addEventListener('popstate', ()=>{
+        router().then((contentBody)=>{
+            load_page_into_body(contentBody)
+        });
+    });
+}
+
+export function hookAllHrefTags() {
     debugMessage('Attempting to hook clicks to all href tags...', 'INFO');
     document.addEventListener('click', function(event) {
         let target = event.target;
@@ -64,7 +72,7 @@ function handleLinkClick(event, link) {
     navigateTo(href);
 }
 
-export function hook_all_form_submissions() {
+export function hookAllFormSubmissions() {
     debugMessage('Attempting to hook all form submissions...', 'INFO');
     document.addEventListener('submit', function(event) {
         let target = event.target;

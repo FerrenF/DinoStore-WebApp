@@ -1,5 +1,6 @@
 
-import {apiRequest, debugMessage} from "../common.js"
+import {debugMessage} from "../common.js"
+import {apiRequest} from "../apiRequest.js";
 export class Product {
     constructor(data) {
         this.id = data.id;

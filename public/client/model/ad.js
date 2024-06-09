@@ -1,4 +1,5 @@
-import {apiRequest, debugMessage} from "../common.js";
+import {debugMessage} from "../common.js";
+import {apiRequest} from "../apiRequest.js";
 
 export class Ad {
     constructor(data) {

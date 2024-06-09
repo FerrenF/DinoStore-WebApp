@@ -1,4 +1,4 @@
-import {apiRequest} from "../common.js";
+import {apiRequest} from "../apiRequest.js";
 
 export class Settings {
     constructor(data) {
