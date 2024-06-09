@@ -24,7 +24,7 @@ All API routes return JSON.
 
 Client Structure:
 
-Client follows MVC loosely.
+Client side MVC.
 
 All routes exposed to the client lead to the same place -> index.html.
 This html file is responsible for loading the client initialization script, /client/dinoStore.js, so that the content can be injected.

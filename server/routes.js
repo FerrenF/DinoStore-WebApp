@@ -35,7 +35,7 @@ function set_up_server_routes(serverApp, applicationObject){
 
 // This is an example app, or a demo, if you want to call it. The restrictions below are UNSAFE for production in any environment where value is involved.
 // As if this is going into production, hah.
-    
+
     serverApp.use((req, res, next) => {
         res.append('Access-Control-Allow-Origin', ['*']);
         res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
