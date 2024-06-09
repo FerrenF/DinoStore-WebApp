@@ -11,6 +11,7 @@ const express = require("express");
     friendly_send
         friendly_send simply wraps whatever object it's sending to the response in JSON, and then attaches
         headers that allow cross-origin resource sharing to happen.
+        TODO: Remove this. Project requirements made it necessary to move cors function to route registration
  */
 function friendly_send(res, obj){
     //'Access-Control-Allow-Origin'
