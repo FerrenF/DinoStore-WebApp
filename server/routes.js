@@ -84,14 +84,17 @@ function set_up_server_routes(serverApp, applicationObject){
         friendly_send(res, new Products(applicationObject).get_products(searchTerms, searchProps, tagFilters));
     });
 
+    // Route to return all ad information
     serverApp.get('/ads', (req, res) => {
         friendly_send(res, new ad(applicationObject).get_all())
     });
 
+    // Route to return the information of a specific ad
     serverApp.get('/ads/:name', (req, res) => {
         friendly_send(res, new ad(applicationObject).get_by_name(req.params.name))
     });
 
+    // Route to return ads of a specific type
     serverApp.get('/ads/type/:adtype', (req, res) => {
         friendly_send(res, new ad(applicationObject).get_all(req.params.adtype))
     });
