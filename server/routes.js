@@ -15,9 +15,7 @@ const express = require("express");
 function friendly_send(res, obj){
     //'Access-Control-Allow-Origin'
     // I had to do this to host on different ports from the same script.
-    res.header('Access-Control-Allow-Credentials', true)
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+
     res.send(JSON.stringify(obj))
 }
 
@@ -27,6 +25,24 @@ function friendly_send(res, obj){
         set_up_server_routes takes an express applicationObject and registers routes to appropriate server API methods.
  */
 function set_up_server_routes(serverApp, applicationObject){
+
+// Our server is running on a different port then the client. Due to modern protocol restrictions, this means that
+// cross-origin resource sharing (CORS)
+
+// We could leave this out if we had the server handing out resources on the same port the client is connected on
+
+// But if we do that, then we can not use the URLs to enter points within the main application (I mean, you COULD use queryParams to store path, but having urls that make sense helps UX)
+
+// This is an example app, or a demo, if you want to call it. The restrictions below are UNSAFE for production in any environment where value is involved.
+// As if this is going into production, hah.
+    
+    serverApp.use((req, res, next) => {
+        res.append('Access-Control-Allow-Origin', ['*']);
+        res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.append('Access-Control-Allow-Headers', 'Content-Type');
+        next();
+    });
+
 
     // Route to get settings
     serverApp.get('/settings', (req, res) => {

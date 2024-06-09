@@ -1,7 +1,7 @@
 {
   "name": "nodedemo",
   "version": "1.0.0",
-  "description": "node app ",
+  "description": "DinoStore",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -17,7 +17,6 @@
   },
   "homepage": "",
   "dependencies": {
-    "express": "^4.17.2",
-    "cors": "^2.8.5"
+    "express": "^4.17.2"
   }
 }
