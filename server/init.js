@@ -31,11 +31,12 @@ function load_data_sources(dataSources, applicationObject) {
 }
 
 const {serverApplicationObject} = require("./application");
+const {debugMessage} = require("./common");
 function init_server_application(){
     /*
         returns an object holding server data
      */
-    console.log(serverApplicationObject)
+    debugMessage('Initializing Server','REQUIRED')
     if(!serverApplicationObject.hasOwnProperty('settings') || !serverApplicationObject['settings'].hasOwnProperty('dataSources')){
         let m = 'Failed to load data sources. Exiting application'
         debug_message(m, 'critical')

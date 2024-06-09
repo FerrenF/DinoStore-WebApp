@@ -1,4 +1,4 @@
-const {set_up_server_routes, set_up_client_routes} = require("./server/routes");
+const {set_up_server_routes, set_up_client_routes, printAvailableRoutes} = require("./server/routes.js");
 
 const PORT = process.env.PORT || 3050
 const SERVER_PORT = PORT + 1
@@ -23,9 +23,13 @@ const {serverApplication} = require('./server/init')
 
 // Step 2: Set up routes
 set_up_server_routes(serverApp, serverApplication)
+
 set_up_client_routes(clientApp)
 
-clientApp.listen(PORT,()=> console.info(`Client has started on ${PORT}`))
-serverApp.listen(SERVER_PORT,()=> console.info(`Server has started on ${SERVER_PORT}`))
+clientApp.listen(PORT,()=> console.info(`Client has started on ${PORT}\n`))
+serverApp.listen(SERVER_PORT,()=> {
+    console.info(`Server has started on ${SERVER_PORT}`)
+    printAvailableRoutes(serverApp)
+})
 
 module.exports = serverApp;

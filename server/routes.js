@@ -5,6 +5,7 @@ const {Products} = require("./model/products");
 const {ad} = require("./model/ad");
 const path = require("path");
 const express = require("express");
+const {debugMessage} = require("./common.js");
 // routes.js serves our REST api route controllers
 
 /*
@@ -115,4 +116,30 @@ function set_up_client_routes(clientApp){
     clientApp.use(express.static(path.join(__dirname, '../public')));
 }
 
-module.exports = {set_up_server_routes, set_up_client_routes}
+
+/*
+        printAvailableRoutes
+            it does as it says - prints the currently registered routes in app
+ */
+
+function printAvailableRoutes(app) {
+    debugMessage('Available routes:','REQUIRED');
+    app._router.stack.forEach((middleware) => {
+        if (middleware.route) {
+            Object.keys(middleware.route.methods).forEach((method) => {
+                debugMessage(`${method.toUpperCase()} ${middleware.route.path}`,'REQUIRED');
+            });
+        } else if (middleware.name === 'router') {
+            middleware.handle.stack.forEach((handler) => {
+                if (handler.route) {
+                    Object.keys(handler.route.methods).forEach((method) => {
+                        debugMessage(`${method.toUpperCase()} ${handler.route.path}`,'REQUIRED');
+                    });
+                }
+            });
+        }
+    });
+}
+
+
+module.exports = {set_up_server_routes, set_up_client_routes, printAvailableRoutes}

@@ -12,6 +12,19 @@ They are just API helper functions that return data from our datasource.
 
 All API routes return JSON.
 
+Server Routes:
+- GET /settings       
+- GET /tags
+- GET /products/id/:id
+- GET /products/:id   
+- GET /products/name/:product_name
+- GET /products
+- GET /ads
+- GET /ads/:name
+- GET /ads/type/:adtype
+
+Related Files/Directories:
+
 * model
   * Ad - Returns ad data
   * appSettings - Returns app settings in bulk

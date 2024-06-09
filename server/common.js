@@ -6,13 +6,16 @@ const msgMap = {
     'WARN': 2,
     'WARNING': 2,
     'ERROR': 3,
-    'CRITICAL': 4
+    'CRITICAL': 4,
+    'REQUIRED': 5
 }
 
-function debug_message(message, level="INFO") {
+function debugMessage(message, level="INFO") {
     let monitorLevel = msgMap[DEBUG_MODE];
     let incomingLevel = msgMap[level.toUpperCase()]
     if ((incomingLevel && incomingLevel) >= monitorLevel) {
         console.log(message)
     }
 }
+
+module.exports = {debugMessage, DEBUG_MODE}
