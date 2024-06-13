@@ -13,7 +13,6 @@ export class Product {
         this.product_weight = data.product_weight;
         this.product_weight_unit = data.product_weight_unit;
         this.product_price = data.product_price;
-        this.product_price_unit = data.product_price_unit;
         this.product_tags = data.product_tags;
         this.next_id = data.next_id;
     }
@@ -34,6 +33,27 @@ export class Product {
             .then(data => new Product(data))
             .catch(error => {
                 debugMessage(`Failed to fetch product by name (${productName})\nError: ${error.message}`, 'ERROR');
+                throw error;
+            });
+    }
+
+    static getList(productIDs) {
+        if (productIDs.length === 0) {
+            return Promise.resolve([]);
+        }
+
+        return apiRequest(`products/list`, 'GET', { "ids": productIDs.join(',') })
+            .then(data => {
+                let rawList = Array.from(data);
+                if (rawList.length) {
+                    debugMessage(`Fetched product data list (${JSON.stringify(rawList)})`, 'INFO');
+                    return rawList.map(product => new Product(product));
+                }
+                return rawList;
+            })
+            .catch(error => {
+                debugMessage(`Failed to fetch list of products (${JSON.stringify(productIDs)})
+                \nError: ${error.message}`, 'ERROR');
                 throw error;
             });
     }

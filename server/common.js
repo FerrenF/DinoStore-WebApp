@@ -1,5 +1,5 @@
 
-const DEBUG_MODE = "WARN"
+const DEBUG_MODE = "INFO"
 const msgMap = {
     'VERBOSE' : 0,
     'INFO': 1,
@@ -13,7 +13,7 @@ const msgMap = {
 function debugMessage(message, level="INFO") {
     let monitorLevel = msgMap[DEBUG_MODE];
     let incomingLevel = msgMap[level.toUpperCase()]
-    if ((incomingLevel && incomingLevel) >= monitorLevel) {
+    if (incomingLevel && (incomingLevel >= monitorLevel)) {
         console.log(message)
     }
 }

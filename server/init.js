@@ -1,53 +1,13 @@
-
-// init.js makes sure that we initiate 'connection' to our data before we start serving routes.
-
-const {debug_message, graceful_shutdown} = require("./common.js");
-const fs = require('fs');
-
-
-function load_json_data_source(dataSource) {
-    let rawData = fs.readFileSync(dataSource);
-    return JSON.parse(rawData);
-}
-
-function load_data_sources(dataSources, applicationObject) {
-    dataSources.forEach(source => {
-        let [filetype, filepath] = source.split(':');
-
-        if (filetype === 'json') {
-            let data = load_json_data_source(filepath);
-
-            Object.keys(data).forEach(key => {
-                if (applicationObject.hasOwnProperty(key)) {
-                    applicationObject[key] = { ...applicationObject[key], ...data[key] };
-                } else {
-                    applicationObject[key] = data[key];
-                }
-            });
-        } else {
-            debug_message(`Unsupported file type in data sources: ${filetype}`, 'warn');
-        }
-    });
-}
-
 const {serverApplicationObject} = require("./application");
 const {debugMessage} = require("./common");
-function init_server_application(){
-    /*
-        returns an object holding server data
-     */
-    debugMessage('Initializing Server','REQUIRED')
-    if(!serverApplicationObject.hasOwnProperty('settings') || !serverApplicationObject['settings'].hasOwnProperty('dataSources')){
-        let m = 'Failed to load data sources. Exiting application'
-        debug_message(m, 'critical')
-        graceful_shutdown(-1,m)
-        return false
-    }
-    load_data_sources(serverApplicationObject.settings.dataSources, serverApplicationObject)
+const {set_up_server_routes, set_up_client_routes} = require("./routes");
 
-    return serverApplicationObject
+function init_server_application(serverApp, clientApp){
+    debugMessage('Server initializing...','REQUIRED');
+
+    set_up_server_routes(serverApp, serverApplicationObject)
+    set_up_client_routes(clientApp)
+    return serverApplicationObject;
 }
 
-
-const serverApplication = init_server_application()
-module.exports = {serverApplication}
+module.exports = {init_server_application}

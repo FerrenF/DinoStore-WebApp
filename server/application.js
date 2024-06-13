@@ -3,10 +3,15 @@
 // modify settings here
 const serverApplicationObject = {
     "settings" : {
-        "dataSources" : ["json:./data/applicationData.json","json:./data/adData.json"]
+        "dataSources" : {
+            'settings' : "./data/applicationData.json",
+            'products' : "./data/applicationData.json",
+            'product' : "./data/applicationData.json",
+            'ads' : "./data/adData.json",
+            'carts': "./data/cartData.json"
+        }
     }
 }
-
 
 // don't modify these
 serverApplicationObject["routes"]={}

@@ -11,12 +11,7 @@ export function indexController() {
     async function initialize_index() {
         contextGatherer.settings = await Settings.getAll()
         contextGatherer.pageUrl = "index"
-       return await loadTemplate(targetTemplate, contextGatherer).then((result)=>{
-           return result
-                //const content = document.getElementById(bodyTarget);
-               // content.innerHTML += result
-            }
-        )
+       return await loadTemplate(targetTemplate, contextGatherer)
     }
     return initialize_index()
 }

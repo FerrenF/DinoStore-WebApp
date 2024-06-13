@@ -4,10 +4,10 @@
     {{
     "template": "templateSearchBar",
     "condition": {
-        "isPage": "index"
+        "isPage": "index,products"
     }
     }}
-    <a href="/"><img alt="Home Icon" src="/img/store.svg"><span>Home</span></a>
-    <a href="/"><img alt="Cart Icon" src="/img/cart.svg"><span>Cart</span></a>
+    <a href="{{"method":"get_query_param_home_url"}}"><img alt="Home Icon" src="/img/store.svg"><span>Home</span></a>
+    <a href="{{"method":"get_query_param_product_url"}}"><img alt="Catalog Icon" src="/img/table-view.svg"><span>Catalog</span></a>
 </div>
 

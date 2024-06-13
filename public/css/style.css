@@ -108,25 +108,69 @@ footer {
     background: #fff;
     padding: 1em;
 }
+
+
 .product-card {
     border: 1px solid #ccc;
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 5px;
-    margin-right: 0.25em;
+    display: flex;
+    flex-direction: column;
+
 }
-.product-card p{
-    margin-bottom: 0;
-    line-height: 1em;
+
+.product-card a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.product-link-area {
+    height:100%
 }
 .product-image-preview {
-    max-width: 70%;
-    border-style: dotted;
-    object-fit: cover;
-    max-height: 60%;
-    min-height: 60%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    max-height: 20em;
 }
+
+.product-card h2,
+.product-card p {
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+.product-details {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.add-to-cart-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #0056b3;
+}
+
 .product-image-main {
+    max-height: 40em;
     max-width: 100%;
     border-style: dotted;
 }
@@ -141,10 +185,50 @@ footer {
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: row;
+    gap:0.5em;
 }
 .product-guide-counter{
     margin-bottom: 0.5em;
 }
+.product-guide-counter div span{
+    margin-right:2em;
+}
+
+.all-products-link{
+    font-size:0.75em;
+}
+
+.add-to-cart-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+.add-to-cart-button:hover {
+    background-color: #218838;
+}
+
+.product-display-content h4 {
+    font-size: 1em;
+}
+
+.product-display-content span {
+    font-size: 0.8em;
+}
+
+
+
+
+
+
 footer nav a {
     color: white;
     margin: 0 0.5em;
@@ -173,6 +257,13 @@ footer nav a {
     font-size: 0.75em;
 }
 
+
+
+
+
+
+
+
 .product-guide-pagination .page-counter{
     display: flex;
     flex-direction: row;
@@ -182,19 +273,27 @@ footer nav a {
     width: 100%;
 }
 
+
+
+
+
+
+
 .search-bar{
     align-content: center;
 }
 .search-bar form{
     display: flex;
     height: 50%;
+    gap: 0.2em;
 }
 .search-bar form input{
     font-size:large;
+    padding:0.2em;
 }
 .search-bar form button{
-    width: 10em;
-    font-size:large;
+    width: 7em;
+    font-size: medium;
 }
 .category-list{
     list-style: none;
@@ -204,4 +303,107 @@ footer nav a {
 }
 .widget-product-categories{
     text-align: right;
+}
+
+
+
+
+
+
+
+
+
+.cart-widget {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ccc;
+    margin-bottom: 1em;
+    right: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+.cart-widget h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item .column-header{
+    font-size:small;
+    flex: 2;
+}
+
+.item-name {
+    flex: 2;
+}
+
+.quantity-controls {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.item-quantity {
+    margin: 0 10px; /* Add margin between quantity and buttons */
+    text-align: center;
+}
+
+.item-price {
+    flex: 1;
+    text-align: right;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-actions {
+    margin-top: 20px; /* Add margin between total and buttons */
+}
+
+.clear-cart-button,
+.checkout-button {
+    display: block;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px; /* Add margin between buttons */
+}
+
+.checkout-button{
+    background-color: #007BFF;
+}
+.clear-cart-button {
+    background-color: #dc3545; /* Error red */
+}
+
+.clear-cart-button:hover {
+    background-color: #c82333; /* Darker shade on hover */
+}
+.checkout-button:hover {
+    background-color: #0056b3;
 }

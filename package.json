@@ -4,7 +4,11 @@
   "description": "DinoStore",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "install-test-deps": "npm install --save-dev jest fs-extra supertest",
+    "cleanup-test-deps": "npm uninstall jest fs-extra supertest",
+    "test": "jest",
+    "test:full": "npm run install-test-deps && npm test && npm run cleanup-test-deps"
   },
   "repository": {
     "type": "git",

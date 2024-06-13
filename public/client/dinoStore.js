@@ -5,7 +5,6 @@ function init_dino_store(){
     hookAllHrefTags()
     hookAllFormSubmissions()
     hookPopstateEvents()
-
 }
 
 init_dino_store()

@@ -1,6 +1,10 @@
 <div class="left-sidebar">
-    {{"template": "templateProductTagFilterList", "condition": {
-        "isPage": "index"
+    {{  "template": "templateProductTagFilterList",
+        "condition": {
+            "isPage": "index,products"
+            },
+        "events":   {
+            "onLoad":   "test_method::10"
         }
     }}
     {{"template": "templateModularAd"}}

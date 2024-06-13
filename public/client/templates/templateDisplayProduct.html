@@ -1,10 +1,11 @@
 <div class="product-display-content">
-    <img class="product-image-main" src="{{"query": "product.product_image"}}"  alt="{{"query": "product.product_image_alt"}}">
+    <img class="product-image-main" src="{{"query": "product.product_image"}}" alt="{{"query": "product.product_image_alt"}}">
     <h2>{{"query": "product.product_title"}}</h2>
-    <p>Asking Price: {{"query": "product.product_price"}} {{"query": "product.product_price_unit"}}</p>
+    <p><b>Asking Price:</b> {{"method": "get_price_string"}}</p>
     <p>{{"query": "product.product_description"}}</p>
-    <p>Weight: {{"query": "product.product_weight"}} {{"query": "product.product_weight_unit"}}</p>
+    <p><b>Weight:</b> {{"query": "product.product_weight"}} {{"query": "product.product_weight_unit"}}</p>
     <h4>Tags: {{"query": "product.product_tags", "format": "csv"}}</h4>
     <a href="/products/id/{{"query": "product.next_id"}}">Next Product</a>
     <a href="/" style="float:right;">Back to Main Page</a>
+    <a class="add-to-cart-button" href="/cart/add/{{"query": "product.id"}}/1?returnUrl={{"method": "get_encoded_path"}}">Add to Cart</a>
 </div>

@@ -1,23 +1,23 @@
 /*
     apiRequest
-        apiRequest takes: a string to append to the current URL's root as an endpoint, a string representing request method, and a list of parameters to convert into query params
-        apiRequest makes use of XMLHttpRequest() to send a request to the server, instead of the fetch api
+        endpoint:   a string to append to the current URL root as an endpoint
+        method:     a string representing request method, and
+        params:     a list of parameters to convert into query parameters (?x=y&i=j)
 
-        TODO:
-            Possibly change promise rejections and subsequent errors into a debugMessage and resolution with placeholder values.
-            Currently, the rejections cause the UX to halt.
+        apiRequest makes use of XMLHttpRequest() to send a request to the server, instead of the fetch api
  */
-import {API_PORT, appendPortToCurrentLocation, debugMessage} from "./common.js";
+import {appendPortToCurrentLocation, debugMessage} from "./common.js";
+import {API_PORT} from "./config.js";
 
 export function apiRequest(endpoint, method = 'GET', params = null) {
-
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         const baseUrl = appendPortToCurrentLocation(API_PORT, false, true);
         let url = `${baseUrl}${endpoint}`;
 
         debugMessage(`Processing API request to ${method} : ${endpoint} with params ${JSON.stringify(params)} through URL:\n${url}`, "VERBOSE");
-        if (params && method === 'GET') {
+
+        if (params && (method === 'GET'||method==='PUT')) {
             const queryString = new URLSearchParams(params).toString();
             url += `?${queryString}`;
         }
@@ -30,30 +30,28 @@ export function apiRequest(endpoint, method = 'GET', params = null) {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try {
                         const jsonResponse = JSON.parse(xhr.responseText);
-
                         resolve(jsonResponse);
                     } catch (error) {
-                        reject(new Error(`Error parsing response JSON: ${error.message}`));
+                        debugMessage(`Problem sending API request ${endpoint}:\n${error.message}`, "ERROR");
+                        resolve(false);
                     }
                 } else {
-                    reject(new Error(`Request failed with status ${xhr.status}: ${xhr.statusText}`));
+                    debugMessage(`Request failed with status ${xhr.status}: ${xhr.statusText}`, "ERROR");
+                    resolve(false);
                 }
             }
         };
 
         xhr.ontimeout = function () {
-            reject(new Error(`Request to ${endpoint} timed out`));
+            debugMessage(`Request to ${endpoint} timed out`, "ERROR");
+            resolve(false);
         };
 
         xhr.onerror = function () {
-            reject(new Error(`Error during the request to ${endpoint}`));
+            debugMessage(`Error during the request to ${endpoint}`, "ERROR");
+            resolve(false);
         };
 
-        // Send the request
-        if (params && method !== 'GET') {
             xhr.send(JSON.stringify(params));
-        } else {
-            xhr.send();
-        }
     });
 }

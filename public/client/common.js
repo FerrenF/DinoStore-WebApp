@@ -1,7 +1,5 @@
-export const APP_PORT = 3050
-export const API_PORT = 3051
+import {DEBUG_MODE} from "./config.js";
 
-export const DEBUG_MODE = "WARN"
 const msgMap = {
     'VERBOSE' : 0,
     'INFO': 1,
@@ -10,10 +8,11 @@ const msgMap = {
     'ERROR': 3,
     'CRITICAL': 4
 }
-export function debugMessage(message, level="INFO") {
+
+export function debugMessage(message, level="WARN") {
     let monitorLevel = msgMap[DEBUG_MODE];
     let incomingLevel = msgMap[level.toUpperCase()]
-    if ((incomingLevel && incomingLevel) >= monitorLevel) {
+    if (incomingLevel >= monitorLevel) {
         console.log(message)
     }
 }
@@ -60,6 +59,10 @@ export function getQueryParam(param) {
 
 export function setQueryParam(param, value) {
     const urlParams = new URLSearchParams(window.location.search)
+    if(value == null){
+        urlParams.delete(param)
+        return urlParams;
+    }
     urlParams.set(param, value);
     return urlParams;
 }

@@ -1,0 +1,23 @@
+<div class="cart-widget" id="sidebar_cart">
+    <h2>Your Cart</h2>
+    <ul class="cart-items">
+        <li class="cart-item">
+            <span class="column-header">Name</span>
+            <span class="column-header">Quantity</span>
+            <span class="column-header">Price</span>
+        </li>
+        {{
+            "method":"get_sidebar_cart_html"
+        }}
+    </ul>
+    <div class="cart-total">
+        <span>Total:</span>
+        <span class="total-price">{{
+            "query":"cartTotal"
+        }}</span>
+    </div>
+    <div class="cart-actions">
+        <a href="/cart/clear?returnUrl={{ "method":"get_encoded_path" }}" class="clear-cart-button">Clear Cart</a>
+        <a href="/" class="checkout-button">Checkout</a>
+    </div>
+</div>

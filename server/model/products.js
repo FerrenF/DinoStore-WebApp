@@ -1,18 +1,21 @@
+const {JsonDataSource} = require("../jsonDataSource");
+
 class Products  {
     constructor(applicationObject) {
         this.applicationObject = applicationObject
+        this.dataSourceName = 'products'
+        this.dataSource = this.applicationObject.settings.dataSources[this.dataSourceName]
+        this.products = new JsonDataSource(this.dataSource).read("products") || {}
     }
 
     // Returns products, filtered by search_terms that are compared against search_properties
     // Injects into each returned project information object the next used id, for client use.
 
     get_products = (search_terms = ["*"], search_properties = ["product_name", "product_title", "product_description", "product_short_description"], tag_filters = []) => {
-        if (!this.applicationObject.hasOwnProperty('products')) {
+        if (!this.products) {
             return false;
         }
-
-        let filteredProducts = this.applicationObject.products;
-
+        let filteredProducts = this.products;
         if (!search_terms.includes("*")) {
             filteredProducts = filteredProducts.filter(product => {
                 return search_properties.some(property => {
@@ -44,11 +47,11 @@ class Products  {
 
     // returns all unique tags, and a product count for each
     get_product_tags = () => {
-        if (!this.applicationObject.hasOwnProperty('products')) {
+        if (!this.products) {
             return false;
         }
 
-        const allProducts = this.applicationObject.products;
+        const allProducts = this.products;
         const tagCount = {};
 
         allProducts.forEach(product => {
@@ -67,18 +70,26 @@ class Products  {
     }
 
     get_num_products = () => {
-        if (this.applicationObject.hasOwnProperty('products')) {
-            return Array.from(this.applicationObject.products).length;
+        if (this.products) {
+            return Array.from(this.products).length;
+        } else {
+            return false
+        }
+    }
+
+    get_product_list = (product_ids) => {
+        if (this.products) {
+            return this.products.filter((product)=>product_ids.indexOf(String(product.id))>-1) || [];
         } else {
             return false
         }
     }
 
     get_next_open_product_id = (from_id = 0) => {
-        if (!this.applicationObject.hasOwnProperty('products')) {
+        if (!this.products) {
             return from_id;
         }
-        const productIds = this.applicationObject.products.map(product => product.id);
+        const productIds = this.products.map(product => product.id);
         let nextId = from_id;
         while (productIds.includes(nextId)) {
             nextId++;
@@ -88,10 +99,11 @@ class Products  {
     }
 
     get_next_used_product_id = (from_id = 0) => {
-        if (!this.applicationObject.hasOwnProperty('products')) {
+        if (!this.products) {
             return false;
         }
-        const productIds = this.applicationObject.products.map(product => product.id).sort((a, b) => a - b);
+
+        const productIds = this.products.map(product => product.id).sort((a, b) => a - b);
         for (let id of productIds) {
             if (id >= from_id) {
                 return id;

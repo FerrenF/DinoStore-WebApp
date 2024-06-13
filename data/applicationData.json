@@ -4,9 +4,10 @@
         "siteSlogan": "Rawr.",
         "siteIcon": "/img/dinosaur-rex-svgrepo-com-white.svg",
         "siteSummary": "<p>If you could order the king of the dinosaurs, Tyrannosaurus Rex, straight to your door: <b>Would you?</b>\n                <br>\n                Well... Our scientists have been sleep deprived consistently for half a decade, and our executives have\n                spent millions in public grants convincing YOU that this is a FANTASTIC idea.\n                <br>\n                <br>\n                Browse our selection of prehistoric pals and have them shipped directly to your doorstep, your neighbors\n                doorstep, your landlord's doorstep, and more! Is a Tyrannasaurus Rex a little too much for you? Say it\n                isn't so!</p>\n            <img alt=\"surprised\" src=\"/img/dinosaur-rex-svgrepo-com.svg\" height=\"256\">\n            <p>\n                Even if it is so, we have a dinosaur for everyone: from the gentle <i>Brontosaurus</i>, to your favorite\n                feathered friend, the <i>Therizinosaurus</i>.</p>",
-        "applicationPath": "application/",
         "maxFilters": 5,
-        "maxProductGuideDisplay": 6
+        "maxProductGuideDisplay": 6,
+        "priceUnit": "USD",
+        "priceSymbol": "$"
     },
     "products": [
         {
@@ -20,7 +21,6 @@
             "product_weight": 10000,
             "product_weight_unit": "lbs",
             "product_price": 100000,
-            "product_price_unit": "USD",
             "product_tags": [
                 "carnivore","extra-large","bipedal","offense"
             ]
@@ -36,7 +36,6 @@
             "product_weight": 30000,
             "product_weight_unit": "lbs",
             "product_price": 200000,
-            "product_price_unit": "USD",
             "product_tags": [
                 "herbivore", "extra-large", "chunk", "defense", "quadrupedal", "horned"
             ]
@@ -52,7 +51,6 @@
             "product_weight": 40000,
             "product_weight_unit": "lbs",
             "product_price": 200000,
-            "product_price_unit": "USD",
             "product_tags": [
                 "herbivore", "transport", "massive", "chunk","defense", "quadrupedal", "spiked"
             ]
@@ -68,7 +66,6 @@
             "product_weight": 40000,
             "product_weight_unit": "lbs",
             "product_price": 150000,
-            "product_price_unit": "USD",
             "product_tags": [
                 "herbivore", "feathered", "medium", "hybrid", "bipedal", "gatherer"
             ]
@@ -84,7 +81,7 @@
             "product_weight": 5000,
             "product_weight_unit": "lbs",
             "product_price": 250000,
-            "product_price_unit": "USD",
+
             "product_tags": [
                 "carnivore", "large", "bipedal", "intelligent", "pack-dino"
             ]
@@ -100,7 +97,7 @@
             "product_weight": 190,
             "product_weight_unit": "lbs",
             "product_price": 90000,
-            "product_price_unit": "USD",
+
             "product_tags": [
                 "herbivore", "small", "pack-dino", "feathered"
             ]
@@ -116,7 +113,7 @@
             "product_weight": 100,
             "product_weight_unit": "lbs",
             "product_price": 30000,
-            "product_price_unit": "USD",
+
             "product_tags": [
                 "carnivore", "small", "pack-dino", "agility", "offense"
             ]
@@ -132,9 +129,39 @@
             "product_weight": 10000,
             "product_weight_unit": "lbs",
             "product_price": 300000,
-            "product_price_unit": "USD",
+
             "product_tags": [
                 "herbivore", "massive", "defense", "platform"
+            ]
+        },
+        {
+            "id":8,
+            "product_name": "stompasaur",
+            "product_title": "Stompasaur",
+            "product_short_description": "Little Jay says these guys stomp all over the place! He knows a thing or two about dinosaurs so I would listen, especially if you work in construction!",
+            "product_description": "Get ready for the coolest dino of them all — the Stomposaur! Imagine a huge dinosaur with legs as tall as a tree, covered in shiny blue scales that sparkle in the sun. Its feet are so gigantic that they could squash anything in its path!\n\nPicture this: two massive feet stomping down, and there are two more hidden behind them, ready to stomp even louder! The Stomposaur loves to walk around, shaking the ground with each step it takes. It's like having your very own dinosaur playground right in your backyard!\n\nWith its long, blue legs and big, stompy feet, the Stomposaur is not just a toy — it's your fearless dinosaur friend on all your adventures. Watch out, because wherever the Stomposaur goes, fun and excitement follow!",
+            "product_image": "/img/stompasaur.png",
+            "product_image_alt": "Boom, boom, boom, I want you in my era.",
+            "product_weight": 2000,
+            "product_weight_unit": "lbs",
+            "product_price": 155000,
+            "product_tags": [
+                "large", "quadrupedal", "herbivore", "construction", "demolition"
+            ]
+        },
+        {
+            "id":9,
+            "product_name": "mango",
+            "product_title": "Mangosaur",
+            "product_short_description": "A Jay production. What makes the Mangosaur truly unique is its striking resemblance to a mango. That's right — this dino's body is as juicy and yellow as your favorite mango fruit!",
+            "product_description": "This incredible creature is like no other — imagine a giant, yellow kidney bean-shaped body towering high above the tallest trees. Its legs are like delicate twigs, and one arm is small while the other is enormous! At the very top sits a teeny-tiny head, peeking out with curiosity. It's so big that you can spot it from miles away, and it loves to stroll around, exploring new places with its wobbly legs.\n\nDespite its size, the Mangosaur is friendly and loves to make new friends. It might not be the fastest dinosaur, but it makes up for it with its cheerful spirit and hilarious antics. Imagine playing hide-and-seek with a dinosaur that's shaped like a mango — it's guaranteed to bring laughter and fun to every adventure!",
+            "product_image": "/img/mangosaur.png",
+            "product_image_alt": "Plump.",
+            "product_weight": 800,
+            "product_weight_unit": "lbs",
+            "product_price": 90000,
+            "product_tags": [
+                "large", "bipedal", "herbivore", "chunk", "fruit"
             ]
         }
     ]

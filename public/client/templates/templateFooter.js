@@ -20,8 +20,7 @@ const makeFooterLink = (active, product_name, product_title, product_id) => {
 
     let buildUrl = "/products/"
 
-    if( product_id)
-    {
+    if( product_id)  {
         buildUrl+="id/"+product_id;
     }
     else if(product_name&&product_name.length){
@@ -31,19 +30,23 @@ const makeFooterLink = (active, product_name, product_title, product_id) => {
 
 }
 
-export function get_footer_html(context){
+export function get_footer_html(context, parentTemplate){
+    let viewingProduct = (context.pageUrl && context.pageUrl === "product");
     let indexIsActive = (context.pageUrl && context.pageUrl === "index");
-    let returnFooterHTML = `<a ${(indexIsActive ? 'class="footer-link-active"':'')} href="/">Home</a>`;
+    let viewingAllProducts = (context.pageUrl && context.pageUrl === "products");
+
+    let returnFooterHTML = `<a ${(indexIsActive ? 'class="footer-link-active"':'')} href="/">Home</a>
+<a ${(viewingAllProducts ? 'class="footer-link-active"':'')} href="/products">Catalog</a>`;
     if(context.products) {
+
         let productFit = 10;
         let productBegin = (context.pageUrl === "product" && context.product) ? context.product.id : 0;
         let filteredProducts = Object.values(context.products).filter((p)=>Number.parseInt(p.id,10) >= productBegin);
-
         try {
 
             filteredProducts.forEach((filteredProduct) => {
-                const op = (fp)=>(fp.id && (fp.id === context.product.id) )|| (fp.product_name && (fp.product_name === context.product.product_name));
-                let isActive =  !indexIsActive ? op(filteredProduct) : false;
+                const op = (fp)=> (fp.id && (fp.id === context.product.id) ) || (fp.product_name && (fp.product_name === context.product.product_name));
+                let isActive = (!indexIsActive && !viewingAllProducts) ? op(filteredProduct) : false;
                 returnFooterHTML += makeFooterLink(isActive, filteredProduct.product_name, filteredProduct.product_title, filteredProduct.id);
             });
 
@@ -52,7 +55,7 @@ export function get_footer_html(context){
                 let extensio = Array.from(context.products, (p)=>new Product(p)).slice(0, Math.min(remainingLength, productBegin - 1))
 
                 extensio.forEach((filteredProduct) => {
-                    let isActive = !indexIsActive ? (filteredProduct.id && (filteredProduct.id === context.product.id)) : false;
+                    let isActive = !indexIsActive && !viewingAllProducts ? (filteredProduct.id && (filteredProduct.id === context.product.id)) : false;
                     returnFooterHTML += makeFooterLink(isActive, filteredProduct.product_name, filteredProduct.product_title, filteredProduct.id);
                 });
             }

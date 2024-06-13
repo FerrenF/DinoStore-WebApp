@@ -2,33 +2,43 @@ import {indexController} from './controller/indexController.js';
 import {productController} from './controller/productController.js';
 import {debugMessage} from './common.js'
 import {load_page_into_body} from "./domUpdate.js";
+import {productsController} from "./controller/productsController.js";
+import {cartController} from "./controller/cartController.js";
 
 function router() {
     const path = window.location.pathname;
 
     if (path === '/'||path==="/application/"||path==="/application") {
         return indexController()
+    }
+    else if (['/products/','/products'].indexOf(path)>-1) {
+
+        return productsController()
     } else if (path.startsWith('/products/')) {
+
         const productId = path.split('/').pop();
         return productController(productId)
-    } else {
-        return new Promise(function(resolve, reject) {
-           resolve('<p>Page not found.</p>')
-            // TODO: Make a page for this. It'll be easy.
-        })
     }
+    else if (path.startsWith('/cart/')) {
+        return cartController()
+    }
+    return new Promise.resolve(function(resolve, reject) {
+      resolve('<p>Page not found.</p>')
+        // TODO: Make a page for this. It'll be easy.
+    })
 }
 
 export function initRouter(){
-    let contentR = router().then((result)=>{
+    router().then((result)=>{
         document.getElementById('page-content').innerHTML = result;
         load_page_into_body(result)
     }).catch((e)=>debugMessage('Error loading router: '+e.message,'ERROR'));
 }
 
-export function navigateTo(url) {
+export function navigateTo(url, load_page=true) {
     history.pushState(null, null, url);
-    router().then((contentBody)=>{
+    debugMessage('Changing URL to '+url,'INFO');
+    return router().then((contentBody) => {
         load_page_into_body(contentBody)
     });
 }
@@ -68,7 +78,8 @@ export function hookAllHrefTags() {
 function handleLinkClick(event, link) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    const href = link.getAttribute('href');
+
+    const href = link.getAttribute('href') || '/';
     navigateTo(href);
 }
 

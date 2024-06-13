@@ -1,15 +1,13 @@
-const {set_up_server_routes, set_up_client_routes, printAvailableRoutes} = require("./server/routes.js");
+const {printAvailableRoutes} = require("./server/routes.js");
 
 const PORT = process.env.PORT || 3050
 const SERVER_PORT = PORT + 1
 
-
-
-var express = require('express');
-var serverApp = express();
+const express = require('express');
+const serverApp = express();
 serverApp.use(express.urlencoded({extended:true}));
 
-var clientApp = express();
+const clientApp = express();
 clientApp.use(express.urlencoded({extended:true}));
 
 //
@@ -18,13 +16,8 @@ clientApp.use(express.urlencoded({extended:true}));
 //
 //
 
-// Step 1: initialize the server before using its routing
-const {serverApplication} = require('./server/init')
-
-// Step 2: Set up routes
-set_up_server_routes(serverApp, serverApplication)
-
-set_up_client_routes(clientApp)
+const {init_server_application} = require('./server/init')
+const serverApplicationObject = init_server_application(serverApp,clientApp)
 
 clientApp.listen(PORT,()=> console.info(`Client has started on ${PORT}\n`))
 serverApp.listen(SERVER_PORT,()=> {
@@ -32,4 +25,4 @@ serverApp.listen(SERVER_PORT,()=> {
     printAvailableRoutes(serverApp)
 })
 
-module.exports = serverApp;
+module.exports = {serverApp, clientApp, serverApplicationObject};

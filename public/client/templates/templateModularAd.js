@@ -8,13 +8,12 @@ export function init_template(context) {
     <span>Ad Sponsored by {{ "property":"ad.ad_sponsor" }}</span>
      */
     return Ad.getAllAds().then((resultList) => {
-
         context.ads = (resultList);
         debugMessage('Modlar ad initialized.', "VERBOSE");
         return { "status": "success" };
     });
 }
-export function get_ad(context){
+export function get_ad(context, parentTemplate){
     if(context.ads){
         context.active_ads = context.active_ads ? context.active_ads + 1 : 1;
         let ad = Object.values(context.ads)[context.active_ads-1];

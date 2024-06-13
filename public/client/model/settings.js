@@ -8,6 +8,8 @@ export class Settings {
         this.siteSummary = data.siteSummary;
         this.applicationPath = data.applicationPath;
         this.maxFilters = data.maxFilters;
+        this.priceUnit = data.priceUnit;
+        this.priceSymbol = data.priceSymbol;
     }
 
     static getAll() {

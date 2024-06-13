@@ -6,12 +6,7 @@
 <div class="layout-container">
     <div class="left-bar center-layout">
             {{
-                "template": "templateLeftSidebar",
-                "slots": [
-                    "templateProductFilters",
-                    "templateSidebarAd",
-                    "templateModularAd"
-                    ]
+                "template": "templateLeftSidebar"
             }}
     </div>
     <div class="content">
@@ -20,18 +15,14 @@
         }}
         {{
             "template": "templateProductGuide",
-                "options": {
-                    "maxItemDisplay":8
+                "settings": {
+                    "maxItemDisplay":4
                 }
         }}
     </div>
     <div class="right-bar center-layout">
             {{
-                "template": "templateRightSidebar",
-                    "slots": [
-                            "templateModularAd",
-                            "templateModularAd"
-                        ]
+                "template": "templateRightSidebar"
             }}
     </div>
 </div>
