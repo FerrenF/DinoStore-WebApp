@@ -15,14 +15,16 @@ import {API_ROUTE, APP_PORT} from "./config.js";
         appendPortToCurrentLocation appends a set of query parameters either to the root directory or current relative directory
 
  */
+
+const HOSTNAME = "http://dino-store-1357a3aac746.herokuapp.com";
 export function appendPortToCurrentLocation(port, includeQueryParams = false, apiDirectoryPrefix = false) {
     const currentLocation = window.location;
     const protocol = currentLocation.protocol;
-    const hostname = currentLocation.hostname;
+    const hostname = HOSTNAME ? HOSTNAME : currentLocation.hostname;
     const pathname = apiDirectoryPrefix ? apiDirectoryPrefix + currentLocation.pathname : currentLocation.pathname;
     const hash = currentLocation.hash;
     const search = includeQueryParams ? currentLocation.search : '';
-    return `${protocol}//${hostname}:${port}${pathname}${search}${hash}`;
+    return `${protocol}//${hostname}${(port? ':' + port:'')}${pathname}${search}${hash}`;
 }
 
 
