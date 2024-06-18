@@ -31,8 +31,7 @@ export function appendPortToCurrentLocation(port, includeQueryParams = false, ap
 export function apiRequest(endpoint, method = 'GET', params = null) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const baseUrl = appendPortToCurrentLocation(APP_PORT, false, API_ROUTE);
-        let url = `${baseUrl}${endpoint}`;
+        let url = HOSTNAME + API_ROUTE + '/' + endpoint;
 
         debugMessage(`Processing API request to ${method} : ${endpoint} with params ${JSON.stringify(params)} through URL:\n${url}`, "VERBOSE");
 
