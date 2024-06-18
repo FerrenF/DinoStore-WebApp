@@ -6,15 +6,16 @@ const path = require("path");
 const express = require("express");
 const {debugMessage} = require("./common.js");
 const {cart} = require("./model/carts");
+const {SERVER_API_ROOT, CLIENT_ROOT} = require("./common");
 
-function friendly_send(res, obj) {
-    res.send(JSON.stringify(obj))
-}
 
 /*
     set_up_server_routes
         set_up_server_routes takes an express applicationObject and registers routes to appropriate server API methods.
  */
+
+
+
 function set_up_server_routes(serverApp, applicationObject) {
 
 // Our server is running on a different port then the client. Due to modern protocol restrictions, this means that
@@ -33,10 +34,10 @@ function set_up_server_routes(serverApp, applicationObject) {
         res.append('Access-Control-Allow-Headers', 'Content-Type');
         next();
     });
+    serverApp.use(express.static(path.join(__dirname, '../public')));
 
-
-    // Route to get settings
-    serverApp.get('/settings', (req, res) => {
+    // Route to get settings`
+    serverApp.get(SERVER_API_ROOT + 'settings', (req, res) => {
         try {
             const settingsData = new settings(applicationObject).get();
             res.json(settingsData);
@@ -46,7 +47,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
 // Route to return tag list
-    serverApp.get('/tags', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'tags', (req, res) => {
         try {
             const tags = new Products(applicationObject).get_product_tags();
             res.json(tags);
@@ -56,7 +57,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
 // Route to get a specific product by ID
-    serverApp.get('/products/id/:id', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'products/id/:id', (req, res) => {
         try {
             const product = new Product(applicationObject).get_by_id(req.params.id);
             if (product) {
@@ -70,7 +71,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
 // Route to get a specific product by ID, or get products by a list of IDs
-    serverApp.get('/products/:id', (req, res, next) => {
+    serverApp.get(SERVER_API_ROOT + 'products/:id', (req, res, next) => {
         try {
             if (req.params.id === "count") {
                 const count = new Products(applicationObject).get_num_products();
@@ -101,7 +102,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
 // Route to get a specific product by product_name
-    serverApp.get('/products/name/:product_name', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'products/name/:product_name', (req, res) => {
         try {
             const product = new Product(applicationObject).get_by_name(req.params.product_name);
             if (product) {
@@ -115,7 +116,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Route to get all products with optional search and filter
-    serverApp.get('/products', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'products', (req, res) => {
         try {
             const { searchProperties, search, filter } = req.query;
             const searchTerms = search ? search.split(',') : ["*"];
@@ -129,7 +130,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Route to return all ad information
-    serverApp.get('/ads', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'ads', (req, res) => {
         try {
             const adsData = new ad(applicationObject).get_all();
             res.json(adsData);
@@ -139,7 +140,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Route to return the information of a specific ad
-    serverApp.get('/ads/:name', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'ads/:name', (req, res) => {
         const adName = req.params.name;
         try {
             const adData = new ad(applicationObject).get_by_name(adName);
@@ -154,7 +155,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Route to return ads of a specific type
-    serverApp.get('/ads/type/:adtype', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'ads/type/:adtype', (req, res) => {
         const adType = req.params.adtype;
         try {
             const adsData = new ad(applicationObject).get_all(adType);
@@ -171,7 +172,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     //
 
     // Get cart by ID
-    serverApp.get('/carts/:id', (req, res) => {
+    serverApp.get(SERVER_API_ROOT + 'carts/:id', (req, res) => {
         const cartId = req.params.id;
         const cartData = new cart(applicationObject).get_by_id(cartId);
         if (cartData) {
@@ -182,13 +183,13 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Create a new cart
-    serverApp.post('/carts/create', (req, res) => {
+    serverApp.post(SERVER_API_ROOT + 'carts/create', (req, res) => {
         const newCartId = new cart(applicationObject).create_new_cart();
         res.json(new cart(applicationObject).get_by_id(newCartId));
     });
 
     // Update cart by ID
-    serverApp.put('/carts/:id', (req, res) => {
+    serverApp.put(SERVER_API_ROOT + 'carts/:id', (req, res) => {
         const cartId = req.query.id;
         const cartList = JSON.parse(req.query.items);
 
@@ -201,7 +202,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Delete cart by ID
-    serverApp.delete('/carts/:id', (req, res) => {
+    serverApp.delete(SERVER_API_ROOT + 'carts/:id', (req, res) => {
         const cartId = req.params.id;
         const deleted = new cart(applicationObject).delete_cart(cartId);
         if (deleted) {
@@ -212,7 +213,7 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
     // Add item to cart by ID
-    serverApp.post('/carts/:id', (req, res) => {
+    serverApp.post(SERVER_API_ROOT + 'carts/:id', (req, res) => {
         const cartId = req.params.id;
         const {item, qty} = req.body;
         if (!item || !qty) {
@@ -223,21 +224,25 @@ function set_up_server_routes(serverApp, applicationObject) {
         }
     });
 
-}
 
-
-/*
-        set_up_client_routes
-            set_up_client_routes redirects all routes on the client port, minus those requests that refer to an individual file and
-            public folders, to the index.html page within the public directory.
- */
-function set_up_client_routes(clientApp) {
-    clientApp.get(/^\/(?!.*\.[a-zA-Z0-9]+$)(.*)$/, (req, res) => {
+    serverApp.get(CLIENT_ROOT + 'products/*', (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
-    clientApp.use(express.static(path.join(__dirname, '../public')));
-}
 
+    serverApp.get(CLIENT_ROOT + 'cart/*', (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
+
+    serverApp.get(CLIENT_ROOT + 'application/*', (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
+
+    serverApp.get(CLIENT_ROOT, (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
+
+
+}
 
 /*
         printAvailableRoutes
@@ -264,4 +269,4 @@ function printAvailableRoutes(app) {
 }
 
 
-module.exports = {set_up_server_routes, set_up_client_routes, printAvailableRoutes}
+module.exports = {set_up_server_routes, printAvailableRoutes}

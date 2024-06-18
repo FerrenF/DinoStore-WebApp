@@ -35,21 +35,6 @@ export function isNumber(x){
     return (typeof x === 'number' && isFinite(x)) ||  (Object.prototype.toString.apply(x) === '[object Number]') ;
 }
 
-/*
-
-    appendPortToCurrentLocation
-        appendPortToCurrentLocation appends a set of query parameters either to the root directory or current relative directory
-
- */
-export function appendPortToCurrentLocation(port, includeQueryParams = false, rootDirectory = false) {
-    const currentLocation = window.location;
-    const protocol = currentLocation.protocol;
-    const hostname = currentLocation.hostname;
-    const pathname = rootDirectory ? '/' : currentLocation.pathname;
-    const hash = currentLocation.hash;
-    const search = includeQueryParams ? currentLocation.search : '';
-    return `${protocol}//${hostname}:${port}${pathname}${search}${hash}`;
-}
 
 export function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search)

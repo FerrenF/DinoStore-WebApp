@@ -1,4 +1,5 @@
-
+const SERVER_API_ROOT = '/api/';
+const CLIENT_ROOT = '/';
 const DEBUG_MODE = "INFO"
 const msgMap = {
     'VERBOSE' : 0,
@@ -18,4 +19,4 @@ function debugMessage(message, level="INFO") {
     }
 }
 
-module.exports = {debugMessage, DEBUG_MODE}
+module.exports = {debugMessage, DEBUG_MODE, SERVER_API_ROOT, CLIENT_ROOT}

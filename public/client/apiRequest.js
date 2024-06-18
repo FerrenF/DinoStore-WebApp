@@ -6,13 +6,30 @@
 
         apiRequest makes use of XMLHttpRequest() to send a request to the server, instead of the fetch api
  */
-import {appendPortToCurrentLocation, debugMessage} from "./common.js";
-import {API_PORT} from "./config.js";
+import {debugMessage} from "./common.js";
+import {API_ROUTE, APP_PORT} from "./config.js";
+
+/*
+
+    appendPortToCurrentLocation
+        appendPortToCurrentLocation appends a set of query parameters either to the root directory or current relative directory
+
+ */
+export function appendPortToCurrentLocation(port, includeQueryParams = false, apiDirectoryPrefix = false) {
+    const currentLocation = window.location;
+    const protocol = currentLocation.protocol;
+    const hostname = currentLocation.hostname;
+    const pathname = apiDirectoryPrefix ? apiDirectoryPrefix + currentLocation.pathname : currentLocation.pathname;
+    const hash = currentLocation.hash;
+    const search = includeQueryParams ? currentLocation.search : '';
+    return `${protocol}//${hostname}:${port}${pathname}${search}${hash}`;
+}
+
 
 export function apiRequest(endpoint, method = 'GET', params = null) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const baseUrl = appendPortToCurrentLocation(API_PORT, false, true);
+        const baseUrl = appendPortToCurrentLocation(APP_PORT, false, API_ROUTE);
         let url = `${baseUrl}${endpoint}`;
 
         debugMessage(`Processing API request to ${method} : ${endpoint} with params ${JSON.stringify(params)} through URL:\n${url}`, "VERBOSE");
