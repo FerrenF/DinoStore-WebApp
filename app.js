@@ -1,6 +1,6 @@
 const {printAvailableRoutes} = require("./server/routes.js");
 
-const PORT = process.env.PORT || 3051;
+const PORT = process.env.PORT || 80;
 const SERVER_PORT = PORT + 1
 
 const express = require('express');
