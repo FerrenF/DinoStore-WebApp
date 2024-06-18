@@ -4,6 +4,9 @@
 This project is an example of a client-side rendering application that utilizes dom diffing to make a seamless
 experience through different data views. 
 
+See it live: https://dino-store-1357a3aac746.herokuapp.com/
+
+
 Features include:
 - A server-side cart with client-side stored cart ID.
 - Popstate control enabling browser forward/backward navigation.
@@ -24,20 +27,25 @@ Server Structure:
 All API routes return JSON or a valid error code.
 
 Server Routes:
-- GET /settings
-- GET /tags
-- GET /products/id/:id      
-- GET /products/:id
-- GET /products/name/:product_name
-- GET /products
-- GET /ads
-- GET /ads/:name
-- GET /ads/type/:adtype
-- GET /carts/:id
-- POST /carts/create
-- PUT /carts/:id
-- DELETE /carts/:id
-- POST /carts/:id
+- GET /api/settings
+- GET /api/tags
+- GET /api/products/id/:id
+- GET /api/products/:id
+- GET /api/products/name/:product_name
+- GET /api/products
+- GET /api/ads
+- GET /api/ads/:name
+- GET /api/ads/type/:adtype
+- GET /api/carts/:id
+- POST /api/carts/create
+- PUT /api/carts/:id
+- DELETE /api/carts/:id
+- POST /api/carts/:id
+- GET /products/*
+- GET /cart/*
+- GET /application/*
+- GET /
+
 
 
 Related Files/Directories:
@@ -55,9 +63,6 @@ Related Files/Directories:
 
 Client Structure:
 
-
-For the client, all routes except direct file links and resource directories redirect to index.html in the public folder.
-This html file is responsible for loading the client initialization script, /client/dinoStore.js.
 
 The initialization file, dinoStore.js, initializes our router and hooks window events so we can navigate seamlessly with natural links.
 The router file, routes.js, looks at the URL in the current window and determines which controller to pass to. Controllers are located in /client/controller.
