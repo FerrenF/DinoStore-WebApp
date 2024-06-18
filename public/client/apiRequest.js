@@ -16,7 +16,7 @@ import {API_ROUTE, APP_PORT} from "./config.js";
 
  */
 
-const HOSTNAME = "dino-store-1357a3aac746.herokuapp.com";
+const HOSTNAME = "";
 export function appendPortToCurrentLocation(port, includeQueryParams = false, apiDirectoryPrefix = false) {
     const currentLocation = window.location;
     const protocol = currentLocation.protocol;
