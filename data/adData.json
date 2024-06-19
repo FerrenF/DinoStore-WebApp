@@ -5,7 +5,7 @@
       "ad_image": "/img/ads/modular_jq.jpg",
       "ad_type": "modular",
       "ad_link": "https://www.jurassicquest.com/",
-      "ad_sponsor": "Jurassic Quest Holdings",
+      "ad_sponsor": "Supposedly Jurassic Quest Holdings",
       "alt_text": "Get tickets to Jurassic Quest!",
       "weight": 1
     },
@@ -23,7 +23,7 @@
       "ad_image": "/img/ads/modular_dinoworld.png",
       "ad_type": "modular",
       "ad_link": "https://www.millerauditorium.com/shows/2023-2024/dinosaur-world-live",
-      "ad_sponsor": "Miller Auditorium",
+      "ad_sponsor": "Supposedly Miller Auditorium",
       "alt_text": "Visit Dinosaur World Live!",
       "weight": 1
     },
@@ -32,7 +32,7 @@
       "ad_image": "/img/ads/sidebar_hulu-dino.jpg",
       "ad_type": "sidebar",
       "ad_link": "https://www.hulu.com/series/dinosaur-f75dc17e-9e61-4282-a6ff-fe31f24310cd",
-      "ad_sponsor": "Hulu",
+      "ad_sponsor": "Supposedly Hulu",
       "alt_text": "Watch Dinosaur on Hulu!",
       "weight": 1
     },
@@ -41,7 +41,7 @@
       "ad_image": "/img/ads/sidebar_dinosamong.webp",
       "ad_type": "sidebar",
       "ad_link": "https://discovervail.com/event/dinosaurs-among-us-exhibit-opening/",
-      "ad_sponsor": "Discover Vail",
+      "ad_sponsor": "Supposedly Discover Vail",
       "alt_text": "Dinosaurs are among us! See an exhibit today!",
       "weight": 1
     }
