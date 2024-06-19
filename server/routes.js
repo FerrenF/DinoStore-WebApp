@@ -225,15 +225,15 @@ function set_up_server_routes(serverApp, applicationObject) {
     });
 
 
-    serverApp.get(CLIENT_ROOT + 'products/*', (req, res) => {
+    serverApp.get(CLIENT_ROOT + 'products*', (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
-    serverApp.get(CLIENT_ROOT + 'cart/*', (req, res) => {
+    serverApp.get(CLIENT_ROOT + 'cart*', (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
-    serverApp.get(CLIENT_ROOT + 'application/*', (req, res) => {
+    serverApp.get(CLIENT_ROOT + 'application*', (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
